@@ -1,0 +1,30 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:16
+    container_name: snipbox_postgres
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  django:
+    build: .
+    container_name: snipbox_django
+    command: gunicorn snipbox.wsgi:application --bind 0.0.0.0:8088 --workers 3 --reload
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+      - ./staticfiles:/app/staticfiles
+    ports:
+      - "8088:8088"
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
