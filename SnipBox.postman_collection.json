@@ -1,0 +1,328 @@
+{
+	"info": {
+		"_postman_id": "c6812179-6458-49ca-ba8b-1c396e9cef31",
+		"name": "SnipBox",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "46628109",
+		"_collection_link": "https://fasil-9147330.postman.co/workspace/Fasil's-Workspace~314012d0-c279-4749-837f-228972756a94/collection/46628109-c6812179-6458-49ca-ba8b-1c396e9cef31?action=share&source=collection_link&creator=46628109"
+	},
+	"item": [
+		{
+			"name": "Snippet List",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzNjExOTAxLCJpYXQiOjE3NjM1MjU1MDEsImp0aSI6ImI3MzUwYmNiNjg3ZTQ2ZjI4ZGM0ZTJjOWUyNmFmMzFjIiwidXNlcl9pZCI6IjIifQ.xV8htj9VO_4TxFFynSuO38O-osaeMmGDb-nTlMVvTtA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/snippets/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"snippets",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Tags List",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzNjExOTAxLCJpYXQiOjE3NjM1MjU1MDEsImp0aSI6ImI3MzUwYmNiNjg3ZTQ2ZjI4ZGM0ZTJjOWUyNmFmMzFjIiwidXNlcl9pZCI6IjIifQ.xV8htj9VO_4TxFFynSuO38O-osaeMmGDb-nTlMVvTtA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/snippets/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"snippets",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Snippets by Tag",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzNjExOTAxLCJpYXQiOjE3NjM1MjU1MDEsImp0aSI6ImI3MzUwYmNiNjg3ZTQ2ZjI4ZGM0ZTJjOWUyNmFmMzFjIiwidXNlcl9pZCI6IjIifQ.xV8htj9VO_4TxFFynSuO38O-osaeMmGDb-nTlMVvTtA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/snippets/tags/1/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"snippets",
+						"tags",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Snippet Detailed",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzNjExOTAxLCJpYXQiOjE3NjM1MjU1MDEsImp0aSI6ImI3MzUwYmNiNjg3ZTQ2ZjI4ZGM0ZTJjOWUyNmFmMzFjIiwidXNlcl9pZCI6IjIifQ.xV8htj9VO_4TxFFynSuO38O-osaeMmGDb-nTlMVvTtA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/snippets/1/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"snippets",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Snippet Update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzNjExOTAxLCJpYXQiOjE3NjM1MjU1MDEsImp0aSI6ImI3MzUwYmNiNjg3ZTQ2ZjI4ZGM0ZTJjOWUyNmFmMzFjIiwidXNlcl9pZCI6IjIifQ.xV8htj9VO_4TxFFynSuO38O-osaeMmGDb-nTlMVvTtA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Test 1\",\n    \"notes\": \"Test 1, Has something new on notes.\",\n    \"tags\": [\"USA\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/snippets/3/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"snippets",
+						"3",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Snippet Delete",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzNjExOTAxLCJpYXQiOjE3NjM1MjU1MDEsImp0aSI6ImI3MzUwYmNiNjg3ZTQ2ZjI4ZGM0ZTJjOWUyNmFmMzFjIiwidXNlcl9pZCI6IjIifQ.xV8htj9VO_4TxFFynSuO38O-osaeMmGDb-nTlMVvTtA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/snippets/2/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"snippets",
+						"2",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Snippet Create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzNjExOTAxLCJpYXQiOjE3NjM1MjU1MDEsImp0aSI6ImI3MzUwYmNiNjg3ZTQ2ZjI4ZGM0ZTJjOWUyNmFmMzFjIiwidXNlcl9pZCI6IjIifQ.xV8htj9VO_4TxFFynSuO38O-osaeMmGDb-nTlMVvTtA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Test 2\",\n    \"notes\": \"Test 2, Has something new on notes.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/snippets/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"snippets",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"test_user\",\n    \"password\": \"Test&Admin\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/users/login/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"users",
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc2Mzc0NTI4OCwiaWF0IjoxNzYzNTcyNDg4LCJqdGkiOiJmZWU4MWJmOWFkZmU0MjJhOTQ4MDRhZDZhOTczYTQ1NiIsInVzZXJfaWQiOiIyIn0.WJlCuTMevyJdj4XwEEf4taWqL_n63ZFsTVt-ZGX_-t8\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/users/token/refresh/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"users",
+						"token",
+						"refresh",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYzNjExOTAxLCJpYXQiOjE3NjM1MjU1MDEsImp0aSI6ImI3MzUwYmNiNjg3ZTQ2ZjI4ZGM0ZTJjOWUyNmFmMzFjIiwidXNlcl9pZCI6IjIifQ.xV8htj9VO_4TxFFynSuO38O-osaeMmGDb-nTlMVvTtA",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
