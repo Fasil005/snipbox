@@ -15,7 +15,7 @@ services:
   django:
     build: .
     container_name: snipbox_django
-    command: gunicorn snipbox.wsgi:application --bind 0.0.0.0:${DJANGO_PORT} --workers 3 --reload
+    command: python manage.py runserver 0.0.0.0:${DJANGO_PORT}
     env_file:
       - .env
     volumes:
