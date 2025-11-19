@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework',
 
     # local apps
+    'users',
     'snippets',
     
 ]
