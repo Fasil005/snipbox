@@ -84,11 +84,15 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
-    "DEFAULT_PERMISSION_CLASSES": (
-        "rest_framework.permissions.IsAuthenticated",
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
     ),
-    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
-    "PAGE_SIZE": 10,
+    'DEFAULT_RENDERER_CLASSES': (
+        'core.utils.custom_renderer.CustomJSONRenderer',
+    ),
+    'EXCEPTION_HANDLER': 'core.utils.custom_exception_handler.custom_exception_handler',
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 10,
 }
 
 # Simple JWT settings
@@ -156,3 +160,54 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+# Create a "logs" directory inside the project (BASE_DIR/logs)
+# This ensures the folder always exists before writing logs
+LOG_DIR = Path(BASE_DIR) / "logs"
+LOG_DIR.mkdir(exist_ok=True)
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False, # Keep Django's default loggers active
+
+    # Log message formats
+    'formatters': {
+        'verbose': {
+            'format': '%(asctime)s [%(levelname)s] %(name)s - %(message)s'
+        },
+        'simple': {
+            'format': '[%(levelname)s] %(message)s'
+        },
+    },
+
+    # Where logs are written
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': 'logs/snipbox.log',
+            'maxBytes': 5 * 1024 * 1024,       # Rotate at 5MB
+            'backupCount': 5,                  # Keep last 5 log files
+            'formatter': 'verbose',
+        },
+        'console': {
+            'level': 'DEBUG',                  # Show everything in terminal/Docker logs
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+        },
+    },
+
+    # Loggers define which handlers receive log messages
+    'loggers': {
+        'django': {
+            'handlers': ['console', 'file'],   # Log Django internals
+            'level': 'INFO',
+            'propagate': True,
+        },
+        # Project logs
+        'snipbox': {
+            'handlers': ['console', 'file'],   # Log project code
+            'level': 'DEBUG',                  # Allow DEBUG and above
+            'propagate': False,
+        },
+    }
+}
