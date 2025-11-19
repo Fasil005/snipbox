@@ -10,10 +10,11 @@ urlpatterns = [
 
     # Third Party Apps URLs
     path('users/login/', TokenObtainPairView.as_view(), name='user_login'),
-    path('users/token/refresh/', 
-        TokenRefreshView.as_view(), 
+    path(
+        'users/token/refresh/',
+        TokenRefreshView.as_view(),
         name='token_refresh'
-        ),
+    ),
 
     # Local Apps URLs
     path('snippets/', include('snippets.urls')),
