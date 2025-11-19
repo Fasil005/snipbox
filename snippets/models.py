@@ -35,7 +35,7 @@ class Tag(models.Model):
     """Model representing a tag for categorizing snippets."""
 
     # String Fields
-    title = models.CharField(max_length=100, blank=True, default='')
+    title = models.CharField(max_length=100, unique=True)
 
     def __str__(self):
         return self.title

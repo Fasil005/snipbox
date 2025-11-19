@@ -1,3 +1,5 @@
+from django.shortcuts import get_object_or_404
+
 from rest_framework import generics
 
 from snippets import models as snippet_models
@@ -36,3 +38,36 @@ class SnippetDetailedAPIView(
     queryset = snippet_models.Snippet.objects.all()
     serializer_class = snippet_serializers.SnippetSerializer
     lookup_field = "id"
+
+
+class TagsAPIView(generics.ListAPIView):
+    """
+    API endpoint to list all available tags.
+    
+    Useful for showing tag options to the user.
+    
+    GET: Returns a list of all tags in the system
+    """
+
+    queryset = snippet_models.Tag.objects.all()
+    serializer_class = snippet_serializers.TagsSerializers
+
+
+class TagDetailedAPIView(generics.ListAPIView):
+    """
+    API endpoint to list all snippets belonging to the authenticated user
+    that are associated with a specific tag.
+    
+    GET: Returns snippets filtered by tag ID for the current user
+    """
+
+    serializer_class = snippet_serializers.SnippetSerializer
+
+    def get_queryset(self):
+        # Get the tag based on URL param: /api/tags/<id>/
+        tag = get_object_or_404(snippet_models.Tag, pk=self.kwargs["id"])
+
+        return snippet_models.Snippet.objects.filter(
+            created_by=self.request.user,
+            tags=tag
+        )
