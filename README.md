@@ -125,6 +125,7 @@ After starting the containers, run migrations:
 # Execute migrations inside the Django container
 docker compose exec django python manage.py migrate
 ```
+This migration creates a test user that can be used to log in, obtain access tokens, and test all APIs.
 
 ### Create New Migrations
 
