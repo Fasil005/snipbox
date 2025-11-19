@@ -25,3 +25,6 @@ services:
       - "${DJANGO_EXPOSED_PORT}:${DJANGO_PORT}"
     depends_on:
       - db
+
+volumes:
+  postgres_data:
