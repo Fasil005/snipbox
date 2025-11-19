@@ -8,23 +8,20 @@ services:
     env_file:
       - .env
     ports:
-      - "5433:5432"
+      - "${DB_EXPOSED_PORT}:${DB_PORT}"
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
   django:
     build: .
     container_name: snipbox_django
-    command: gunicorn snipbox.wsgi:application --bind 0.0.0.0:8088 --workers 3 --reload
+    command: gunicorn snipbox.wsgi:application --bind 0.0.0.0:${DJANGO_PORT} --workers 3 --reload
     env_file:
       - .env
     volumes:
       - .:/app
       - ./staticfiles:/app/staticfiles
     ports:
-      - "8088:8088"
+      - "${DJANGO_EXPOSED_PORT}:${DJANGO_PORT}"
     depends_on:
       - db
-
-volumes:
-  postgres_data:
