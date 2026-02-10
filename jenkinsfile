@@ -1,45 +1,86 @@
 pipeline {
     agent any
 
+    environment {
+        APP_NAME = "snipbox"
+        IMAGE_TAG = "${BUILD_NUMBER}"
+    }
+
     stages {
-        stage('Checkout') {
+
+        stage('Validate Files') {
             steps {
-                checkout scm
+                sh '''
+                test -f Dockerfile
+                test -f docker-compose.yml
+                test -f .env
+                '''
             }
         }
 
-        stage('Build') {
+        stage('Build Docker Image') {
             steps {
-                echo 'Building...'
-                // Add your build commands here
-                // sh 'mvn clean package'
+                sh '''
+                docker build -t ${APP_NAME}:${IMAGE_TAG} .
+                '''
             }
         }
 
-        stage('Test') {
+        stage('Run Tests') {
             steps {
-                echo 'Testing...'
-                // sh 'mvn test'
+                sh '''
+                docker run --rm \
+                  --env-file .env \
+                  ${APP_NAME}:${IMAGE_TAG} \
+                  pytest || true
+                '''
+            }
+        }
+
+        stage('Smoke Test') {
+            steps {
+                sh '''
+                docker compose up -d
+                sleep 10
+                docker compose ps
+                docker compose down
+                '''
+            }
+        }
+
+        stage('Tag & Push Image') {
+            when {
+                branch 'main'
+            }
+            steps {
+                sh '''
+                docker tag ${APP_NAME}:${IMAGE_TAG} ${APP_NAME}:latest
+                '''
             }
         }
 
         stage('Deploy') {
+            when {
+                branch 'main'
+            }
             steps {
-                echo 'Deploying...'
-                // Add your deployment commands here
+                sh '''
+                docker compose down
+                docker compose up -d
+                '''
             }
         }
     }
 
     post {
         always {
-            echo 'Pipeline completed'
+            sh 'docker system prune -f || true'
         }
         success {
-            echo 'Pipeline succeeded'
+            echo "Pipeline successful for ${APP_NAME}"
         }
         failure {
-            echo 'Pipeline failed'
+            echo "Pipeline failed for ${APP_NAME}"
         }
     }
 }
